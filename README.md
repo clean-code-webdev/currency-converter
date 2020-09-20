@@ -4,7 +4,7 @@
 A currency converter web application
 
 ## Technologies used
-HTML, CSS and JavaScript
+HTML, CSS, JavaScript and API
 
 ## Author
 Ricardo Martinez
