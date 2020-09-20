@@ -1,0 +1,9 @@
+{
+    "version": 3,
+    "mappings": "AAAA,AAAA,gBAAgB,CAAC;EACb,KAAK,EAAE,KAAK;EACZ,MAAM,EAAE,KAAK;EACb,UAAU,EAAE,SAAS;EACrB,MAAM,EAAE,WAAW;CACtB;;AAED,AAAA,uBAAuB,CAAC;EACpB,KAAK,EAAE,KAAK;EACZ,MAAM,EAAE,KAAK;EACb,UAAU,EAAE,SAAS;EACrB,MAAM,EAAE,cAAc;EACtB,QAAQ,EAAE,QAAQ;EAClB,GAAG,EAAE,mBAAmB;EACxB,IAAI,EAAE,kBAAkB;CAC3B",
+    "sources": [
+        "ads.scss"
+    ],
+    "names": [],
+    "file": "ads.css"
+}

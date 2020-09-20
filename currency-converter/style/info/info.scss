@@ -1,0 +1,42 @@
+#info-content {
+    .info-p,
+    .info-ul {
+        letter-spacing: 0.1rem;
+        font-size: 1.5rem;
+        line-height: 2.5rem;
+        width: 90%;
+        text-indent: 1.5rem;
+        margin: 2rem auto;
+        text-align: justify;
+        color: black;
+    }
+}
+
+#info-content {
+    .info-p {
+        .intext-icon {
+            margin: 0 0.5rem;
+            width: 1.5rem;
+            color: black;
+        }
+    }
+}
+
+#info-content {
+    .info-ul {
+        .li {
+            font-size: 1.5rem;
+            text-indent: 3rem;
+        }
+    }
+}
+
+@media screen and (min-width: 768px) {
+    #info-content {
+        .info-p,
+        .info-ul {
+            font-size: 1.7rem;
+            margin-bottom: 5rem;
+        }
+    }
+}

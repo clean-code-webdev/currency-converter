@@ -1,0 +1,44 @@
+#nav {
+    ul {
+        #nav-rates,
+        #nav-info {
+            .indicator {
+                display: none;
+            }
+        }
+    }
+}
+
+#nav {
+    background: linear-gradient(to right, #ac73ff, #c478da);
+    ul {
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+        li {
+            font-size: 3rem;
+            list-style: none;
+            color: #ffffff;
+            padding: 2rem 0;
+            text-transform: capitalize;
+            position: relative;
+            text-align: center;
+            .nav-li {
+                cursor: pointer;
+            }
+            img {
+                width: 3rem;
+                height: 3rem;
+                object-fit: cover;
+            }
+            .indicator {
+                clip-path: polygon(50% 0%, 0% 100%, 100% 100%);
+                background-color: #ffffff;
+                width: 3rem;
+                height: 1rem;
+                position: absolute;
+                bottom: -0.1rem;
+                left: calc(50% - 1.5rem);
+            }
+        }
+    }
+}

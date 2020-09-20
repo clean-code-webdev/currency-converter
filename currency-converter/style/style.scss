@@ -1,0 +1,78 @@
+* {
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+}
+
+html {
+    font-size: 10px;
+}
+
+body {
+    width: 100vw;
+    height: 100vh;
+    // margin: auto;
+    font-family: "Roboto", sans-serif;
+    color: #490f74;
+    overflow-x: hidden;
+}
+
+/* ------- */
+
+@import "./nav/style.scss";
+@import "./converter/style.scss";
+@import "./rates/style.scss";
+@import "./info/info.scss";
+@import "./ads/ads.scss";
+@import "./footer/footer.scss";
+
+/* ------- */
+
+#rates-content,
+#info-content {
+    // display: none;
+    width: 100%;
+    margin: auto;
+}
+
+#rates-content,
+#info-content {
+    display: none;
+}
+
+h1 {
+    font-size: 5rem;
+    text-align: center;
+    color: black;
+    margin: 0 auto 3rem;
+}
+
+@media screen and (min-width: 768px) {
+    #nav {
+        width: 100vw;
+        ul {
+            width: 70rem;
+            margin: auto;
+        }
+    }
+    #rates-content,
+    #info-content {
+        width: 70rem;
+        margin: auto;
+    }
+}
+
+@media screen and (min-width: 1200px) {
+    #nav {
+        width: 100%;
+        ul {
+            width: 100rem;
+            margin: auto;
+        }
+    }
+    #rates-content,
+    #info-content {
+        width: 70rem;
+        margin: auto;
+    }
+}

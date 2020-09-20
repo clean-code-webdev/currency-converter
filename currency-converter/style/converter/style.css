@@ -1,0 +1,225 @@
+#converter-content {
+  min-height: 10vh;
+  width: 100%;
+  margin: auto;
+}
+
+#converter-content #quantity-input {
+  width: 100%;
+  height: 70vh;
+  margin: 5rem auto 0;
+}
+
+#converter-content #quantity-input input {
+  width: 80%;
+  line-height: 6rem;
+  font-weight: bolder;
+  font-size: 3rem;
+  margin: 0 10%;
+  text-align: center;
+  border: 0.1rem solid #c3bfc1;
+  color: #898989;
+  padding: 0.5rem 0 0;
+}
+
+#converter-content #quantity-input input:focus {
+  outline: none;
+  border: 0.1rem solid #541286;
+}
+
+#converter-content #quantity-input form {
+  width: 85%;
+  margin: auto;
+  display: -ms-grid;
+  display: grid;
+  -ms-grid-columns: (1fr)[4];
+      grid-template-columns: repeat(4, 1fr);
+  padding: 2rem 0;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  justify-items: center;
+}
+
+#converter-content #quantity-input form p {
+  text-align: center;
+  font-size: 2rem;
+  line-height: 6rem;
+  color: #b874ec;
+}
+
+#converter-content #quantity-input form #convert-from,
+#converter-content #quantity-input form #convert-to {
+  border: 0;
+  font-size: 2rem;
+  color: #898989;
+  background: white;
+}
+
+#converter-content #quantity-input form #convert-from:focus,
+#converter-content #quantity-input form #convert-to:focus {
+  border: 0;
+  outline: none;
+}
+
+#converter-content #quantity-input form .submit {
+  border-radius: 50%;
+  width: 5rem;
+  height: 5rem;
+  border: 0;
+  font-size: 1.8rem;
+  text-transform: uppercase;
+  font-weight: bolder;
+  color: #ffffff;
+  background: radial-gradient(#ff70a6, #ff72a7);
+  -webkit-box-shadow: 0.1rem 0.5rem 2rem #ff70a6;
+          box-shadow: 0.1rem 0.5rem 2rem #ff70a6;
+}
+
+#converter-content #quantity-input #output {
+  width: 85%;
+  margin: 0 auto 5rem;
+}
+
+#converter-content #quantity-input #output #conversion-output {
+  font-size: 4rem;
+  text-align: center;
+  color: #7d7d7d;
+  font-weight: 600;
+}
+
+#converter-content #quantity-input #output #conversion-output #currency {
+  text-transform: uppercase;
+  padding-left: 2rem;
+}
+
+#converter-content #quantity-input #output #currenty-output {
+  width: 100%;
+  text-align: center;
+  font-size: 1.6rem;
+  font-weight: 400;
+  font-style: italic;
+  text-transform: uppercase;
+}
+
+#converter-content #quantity-input #output #currenty-output #equal-sign {
+  padding: 0 1rem;
+}
+
+#converter-content .econ-use-curr {
+  width: 95%;
+  padding: 0 2rem;
+  margin: 15rem auto 0;
+}
+
+#converter-content .econ-use-curr h2 {
+  color: black;
+  text-align: center;
+  margin-bottom: 2rem;
+}
+
+#converter-content .econ-use-curr #grid-holder {
+  display: -ms-grid;
+  display: grid;
+  -ms-grid-columns: (1fr)[3];
+      grid-template-columns: repeat(3, 1fr);
+  row-gap: 1rem;
+}
+
+#converter-content .econ-use-curr #grid-holder .curr-column {
+  color: black;
+}
+
+#converter-content .econ-use-curr #grid-holder .curr-column h3 {
+  font-size: 1.2rem;
+}
+
+#converter-content .econ-use-curr #grid-holder .curr-column ul li {
+  font-size: 1rem;
+  list-style: none;
+  padding: 0.5rem 0;
+  height: 3rem;
+  margin: 0.5rem 0;
+}
+
+#converter-content .econ-use-curr #grid-holder .curr-column ul li:nth-child(even) {
+  background: lightgray;
+}
+
+#converter-content .econ-use-curr #grid-holder .curr-column:nth-of-type(3) {
+  text-align: center;
+}
+
+#converter-content .econ-use-curr .bill-img {
+  margin: 3rem auto;
+  width: 95%;
+}
+
+#converter-content .econ-use-curr .bill-img img {
+  width: 100%;
+  -o-object-fit: cover;
+     object-fit: cover;
+}
+
+#converter-content .econ-use-curr .facts {
+  border: 0.1rem solid gray;
+  width: 95%;
+  margin: auto;
+  padding: 1rem;
+  border-radius: 1rem;
+  color: black;
+}
+
+#converter-content .econ-use-curr .facts p {
+  font-size: 1.4rem;
+  line-height: 2rem;
+  text-indent: 2rem;
+  text-align: justify;
+  margin: 1.5rem auto;
+}
+
+#converter-content .econ-use-curr .facts h2 {
+  margin-top: 3rem;
+}
+
+#converter-content .econ-use-curr .facts ul {
+  margin: auto;
+  text-align: justify;
+  font-size: 1.2rem;
+}
+
+#converter-content .econ-use-curr .facts ul li {
+  text-indent: 2rem;
+  padding: 0.5rem 0;
+  list-style-type: none;
+  color: black;
+  line-height: 1.5rem;
+}
+
+#converter-content .econ-use-curr .facts ul li a {
+  color: black;
+  text-decoration: none;
+}
+
+#converter-content {
+  width: 100%;
+  margin: auto;
+}
+
+#converter-content .econ-use-curr:nth-last-of-type(1) {
+  margin: 0 auto 5rem;
+  width: 95%;
+}
+
+@media screen and (min-width: 768px) {
+  #converter-content {
+    width: 70rem;
+  }
+}
+
+@media screen and (min-width: 1200px) {
+  #converter-content {
+    width: 70rem;
+  }
+}
+/*# sourceMappingURL=style.css.map */

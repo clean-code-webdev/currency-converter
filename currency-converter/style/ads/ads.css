@@ -1,0 +1,17 @@
+.adsense-320x100 {
+  width: 32rem;
+  height: 10rem;
+  background: lightgray;
+  margin: 2rem auto 0;
+}
+
+.adsense-320x100-bottom {
+  width: 32rem;
+  height: 10rem;
+  background: lightgray;
+  margin: 3rem auto 1rem;
+  position: absolute;
+  top: calc(100vh - 13rem);
+  left: calc(50vw - 16rem);
+}
+/*# sourceMappingURL=ads.css.map */

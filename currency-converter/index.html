@@ -1,0 +1,684 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <meta name="description"
+        content="Currency converter! Dollar Euro converter. Check out the actual monetary price of almost any money.">
+    <meta name="keywords"
+        content="dolar hoje,dólar hoje, dollar now, dollar today, dollar price, money value, monetary value, cotação do dolar hoje, preço do dolar hoje,valor do dolar hoje, cotação, currency converter, converter, currency converter app, price, euro now, euro price, euro today, euro dollar converter, dollar euro converter">
+    <meta name="author" content="Ricardo Martinez - Cleancode">
+
+
+    <!-- google fonts -->
+    <link
+        href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap"
+        rel="stylesheet" />
+
+    <!-- fontawesome -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.12.0-2/js/all.min.js"
+        integrity="sha256-+Q/z/qVOexByW1Wpv81lTLvntnZQVYppIL1lBdhtIq0=" crossorigin="anonymous"></script>
+
+    <!-- style -->
+    <link rel="stylesheet" href="./style/style.css" />
+
+    <title>Document</title>
+</head>
+
+<body>
+    <nav id="nav">
+        <ul>
+            <li id="nav-converter">
+                <!-- <span>converter</span> -->
+                <span></span><img src="./img/icons/x.png" class="nav-li" alt="icon"></span>
+                <div class="indicator" id="converter-indicator"></div>
+            </li>
+            <li id="nav-rates">
+                <!-- <span>rates</span> -->
+                <span><i class="far fa-list-alt nav-li"></i></span>
+                <div class="indicator" id="rates-indicator"></div>
+            </li>
+            <li id="nav-info">
+                <!-- <span>info</span> -->
+                <span><i class="fas fa-info nav-li"></i></span>
+                <div class="indicator" id="info-indicator"></div>
+            </li>
+        </ul>
+    </nav>
+
+    <!-- ---------- converter
+    -------------------------------------------------- -->
+    <div id="converter-content" class="content">
+
+        <div id="quantity-input">
+            <input type="text" id="dollar-quantity" value="1" onblur="fillInput(this)" />
+            <form>
+                <select id="convert-from" name="convert-from">
+                    <option value="usd">USD</option>
+                    <option value="eur">EUR</option>
+                    <option value="aud">AUD</option>
+                    <option value="bgn">BGN</option>
+                    <option value="brl">BRL</option>
+                    <option value="cad">CAD</option>
+                    <option value="chf">CHF</option>
+                    <option value="cny">CNY</option>
+                    <option value="czk">CZK</option>
+                    <option value="dkk">DKK</option>
+                    <option value="gbp">GBP</option>
+                    <option value="hkd">HKD</option>
+                    <option value="hrk">HRK</option>
+                    <option value="huf">HUF</option>
+                    <option value="idr">IDR</option>
+                    <option value="ils">ILS</option>
+                    <option value="inr">INR</option>
+                    <option value="isk">ISK</option>
+                    <option value="jpy">JPY</option>
+                    <option value="krw">KRW</option>
+                    <option value="mxn">MXN</option>
+                    <option value="myr">MYR</option>
+                    <option value="nok">NOK</option>
+                    <option value="nzd">NZD</option>
+                    <option value="php">PHP</option>
+                    <option value="pln">PLN</option>
+                    <option value="ron">RON</option>
+                    <option value="rub">RUB</option>
+                    <option value="sek">SEK</option>
+                    <option value="sgd">SGD</option>
+                    <option value="thb">THB</option>
+                    <option value="try">TRY</option>
+                    <option value="zar">ZAR</option>
+                </select>
+
+                <!-- <p><i class="fas fa-sync-alt"></i></p> -->
+                <p>to</p>
+
+                <select id="convert-to" name="convert-to">
+                    <option value="eur">EUR</option>
+                    <option value="usd">USD</option>
+                    <option value="aud">AUD</option>
+                    <option value="bgn">BGN</option>
+                    <option value="brl">BRL</option>
+                    <option value="cad">CAD</option>
+                    <option value="chf">CHF</option>
+                    <option value="cny">CNY</option>
+                    <option value="czk">CZK</option>
+                    <option value="dkk">DKK</option>
+                    <option value="gbp">GBP</option>
+                    <option value="hkd">HKD</option>
+                    <option value="hrk">HRK</option>
+                    <option value="huf">HUF</option>
+                    <option value="idr">IDR</option>
+                    <option value="ils">ILS</option>
+                    <option value="inr">INR</option>
+                    <option value="isk">ISK</option>
+                    <option value="jpy">JPY</option>
+                    <option value="krw">KRW</option>
+                    <option value="mxn">MXN</option>
+                    <option value="myr">MYR</option>
+                    <option value="nok">NOK</option>
+                    <option value="nzd">NZD</option>
+                    <option value="php">PHP</option>
+                    <option value="pln">PLN</option>
+                    <option value="ron">RON</option>
+                    <option value="rub">RUB</option>
+                    <option value="sek">SEK</option>
+                    <option value="sgd">SGD</option>
+                    <option value="thb">THB</option>
+                    <option value="try">TRY</option>
+                    <option value="zar">ZAR</option>
+                </select>
+
+                <button type="button" class="submit" id="converter-go">go</button>
+            </form>
+
+            <div id="output">
+                <p id="conversion-output">
+                    <span id="amount"></span><span id="currency"></span>
+                </p>
+                <p id="currenty-output">
+                    <span id="from">1 USD</span><span id="equal-sign"> = </span><span id="to"></span>
+                </p>
+            </div>
+
+
+        </div>
+
+        <!-- page content -->
+        <div class="econ-use-curr">
+            <h1>Dollar now <br>Currency Converter</h1>
+            <h2>Economies that use dollar </h2>
+            <div id="grid-holder">
+                <div class="curr-column">
+                    <h3>Countries</h3>
+                    <ul>
+                        <li>  Australia and its territories </li>
+                        <li>  Nauru </li>
+                        <li>  Bahamas </li>
+                        <li>  Barbados </li>
+                        <li>  Belize </li>
+                        <li>  Bermuda </li>
+                        <li>  Brunei </li>
+                        <li>  Canada </li>
+                        <li>  Cayman Islands </li>
+                        <li>  Antigua and Barbuda </li>
+                        <li>  Dominica </li>
+                        <li>  Grenada </li>
+                        <li>  Saint Kitts and Nevis </li>
+                        <li>  Saint Lucia </li>
+                        <li>  Saint Vincent and the Grenadines </li>
+                        <li>  Fiji </li>
+                        <li>  Guyana </li>
+                        <li>  Hong Kong </li>
+                        <li>  Jamaica </li>
+                        <li>  Kiribati </li>
+                        <li>  Liberia </li>
+                        <li>  Namibia </li>
+                        <li>  Taiwan </li>
+                        <li>  New Zealand and its territories </li>
+                        <li>  Singapore </li>
+                        <li>  Solomon Islands </li>
+                        <li>  Suriname </li>
+                        <li>  Trinidad and Tobago </li>
+                        <li>  Tuvalu </li>
+                        <li>  East Timor </li>
+                        <li>  Ecuador </li>
+                        <li>  El Salvador </li>
+                        <li>  Marshall Islands </li>
+                        <li>  Federated States of Micronesia </li>
+                        <li>  Palau </li>
+                        <li>  United States and its territories </li>
+                        <li>  Zimbabwe </li>
+
+
+                    </ul>
+                </div>
+                <div class="curr-column">
+                    <h3>Currency</h3>
+                    <ul>
+                        <li> Australian dollar </li>
+                        <li> Australian dollar </li>
+                        <li> Bahamian dollar </li>
+                        <li> Barbadian dollar </li>
+                        <li> Belize dollar </li>
+                        <li> Bermudian dollar </li>
+                        <li> Brunei dollar </li>
+                        <li> Canadian dollar </li>
+                        <li> Cayman Islands dollar </li>
+                        <li> East Caribbean dollar </li>
+                        <li> East Caribbean dollar </li>
+                        <li> East Caribbean dollar </li>
+                        <li> East Caribbean dollar </li>
+                        <li> Eastern Caribbean dollar </li>
+                        <li> Eastern Caribbean dollar </li>
+                        <li> Fijian dollar </li>
+                        <li> Guyanese dollar </li>
+                        <li> Hong Kong dollar </li>
+                        <li> Jamaican dollar </li>
+                        <li> Kiribati dollar </li>
+                        <li> Liberian dollar </li>
+                        <li> Namibian dollar  </li>
+                        <li> New Taiwan dollar </li>
+                        <li> New Zealand dollar </li>
+                        <li> Singapore dollar </li>
+                        <li> Solomon Islands dollar </li>
+                        <li> Surinamese dollar </li>
+                        <li> Trinidad and Tobago dollar </li>
+                        <li> Tuvaluan dollar  </li>
+                        <li> United States dollar </li>
+                        <li> United States dollar </li>
+                        <li> United States dollar </li>
+                        <li> United States dollar </li>
+                        <li> United States dollar </li>
+                        <li> United States dollar </li>
+                        <li> United States dollar </li>
+                        <li> United States dollar </li>
+                    </ul>
+                </div>
+                <div class="curr-column">
+                    <h3>Code</h3>
+                    <ul>
+                        <li> AUD </li>
+                        <li> AUD </li>
+                        <li> BSD </li>
+                        <li> BBD </li>
+                        <li> BZD/USD </li>
+                        <li> BMD </li>
+                        <li> BND </li>
+                        <li> CAD </li>
+                        <li> KYD </li>
+                        <li> XCD </li>
+                        <li> XCD </li>
+                        <li> XCD </li>
+                        <li> XCD </li>
+                        <li> XCD </li>
+                        <li> XCD </li>
+                        <li> FJD </li>
+                        <li> GYD </li>
+                        <li> HKD </li>
+                        <li> JMD </li>
+                        <li> KID / AUD </li>
+                        <li> LRD </li>
+                        <li> NAD </li>
+                        <li> TWD </li>
+                        <li> NZD </li>
+                        <li> SGD </li>
+                        <li> SBD </li>
+                        <li> SRD </li>
+                        <li> TTD </li>
+                        <li> TVD / AUD </li>
+                        <li> USD </li>
+                        <li> USD </li>
+                        <li> USD </li>
+                        <li> USD </li>
+                        <li> USD </li>
+                        <li> USD </li>
+                        <li> USD </li>
+                        <li> USD </li>
+                    </ul>
+                </div>
+            </div>
+            <div class="bill-img">
+                <img src="./img/bills/2-dollar.jpg" alt="dollar bill">
+            </div>
+            <div class="facts">
+                <ul>
+                    <li>The United States dollar (sign: $; code: USD; also abbreviated US$ and referred to as the
+                        dollar, U.S. dollar, or American dollar) is the official currency of the United States and its
+                        territories.</li>
+                    <li>Dollar banknotes: $1, $2, $5, $10, $20, $50, $100, $500, $1,000, $5,000, $10,000.</li>
+                    <li>Dollar coins: ½¢, 1¢, 2¢, 3¢, 5¢, 10¢, 20¢, 25¢, $2.50, $3, $5, $10, $20.</li>
+                    <li><a href="https://www.federalreserve.gov/" target="_blank">Central Bank: Federal Reserve System
+                        </a></li>
+                </ul>
+                <p>The word "dollar" is found in the very first paragraph of Section 9 of Article I of the Constitution.
+                    It's used as a reference to the Spanish milled dollar and it was worthy 8 Spanish units of currency
+                    aproximately.</p>
+                <p>In 1792 the United States adopted dollar as it's monetary currency. </p>
+                <p>Curiosity: not everybody knows it, but as apposite to most of other currency notes around the world
+                    the USD notes are made from cotton fiber, not from wood fiber. The word "dollar" comer from the
+                    17th-century Dutch "dalar", which used
+                    to be the country's currency.</p>
+
+                <p>The dollar hasn't escaped slanged. Actually it has quite a few names. Here are some of them:</p>
+
+                <ul>
+                    <li>Benjamins: a one-hundred-dollar bill</li>
+                    <li>Big one: one thousand dollars </li>
+                    <li>Bills: multiples of one hundred dollars</li>
+                    <li>Bones: dollars</li>
+                    <li>Bucks: dollars </li>
+                    <li>Coin: money, both paper and coinage </li>
+                    <li>Dead presidents: paper money </li>
+                    <li>Dime: ten dollars </li>
+                    <li>Doubles: twenty-dollar bills </li>
+                    <li>Fivers: five-dollar bills </li>
+                    <li>Grand: one thousand dollars </li>
+                    <li>Nickel: five dollars </li>
+                    <li>Ones: dollars </li>
+                    <li>Penny: one cent </li>
+                    <li>Quarter: twenty-five dollar cents </li>
+                    <li>Singles: one-dollar bills </li>
+                    <li>Yards: one hundred dollars</li>
+                </ul>
+
+
+                <p>Among the most common words we find: dough, bread, loot, smackers, Benji, bucks, cheddar, paper,
+                    stash, moolah, Benjamin, and samoleons. Some less used words are: clams, tamales, bones, lettuce,
+                    grease, cheese, guap, scratch, salad, scrilla,
+                    scrill, chips, cake, ducats, spondulix, celery, and cabbage. The dollar has also been referred to as
+                    a "bean" or "bone". </p>
+                <p>The symbol $ is an evolution of the late 18th-century Spanish peso symbol "ps". But the USD dollar
+                    symbol isn't the only thing the was influenced by the Spanish peso. The spanish currency also
+                    influenced the dollar coin's size and looks,
+                    especially the pesos minted in Mexito and Peru. In a way we can say that the U.S. dollar and the
+                    Spanish peso are sister currencies.</p>
+                <h2>Characteristics of the dollar coins:</h2>
+                <p>The 1 cent coin - also called "penny" - is portraited by Abraham Lincoln in it's front and by the
+                    Union Shield in it's back. It weights 2.5 g and is 0.75 inch in diameter. It's 9.5% zn. </p>
+                <p>The 5 cents coin - also called "nickel" - is portraited by Thomas Jefferson in it's front and by the
+                    Monticello in it's back. It weights 5.0 g and is 0.8 inch in diameter. It's 75% Cu. </p>
+                <p>The 10 cents coin - also called "dime" - is portraited by Franklin Roosevelt in it's front and by the
+                    olive branch, torch and oak branch in it's back. It weights 2.26 g and is 0.7 inch in diameter. It's
+                    91% Cu. </p>
+                <p>The 25 cents coin - also called "quarter" - is portraited by George Washington in it's front and by
+                    the five different designs per year in it's back. It weights 5.6 g and is 0.95 inch in diameter.
+                    It's 91% Cu.</p>
+                <p>The 50 cents coin - also called "half" - is portraited by John Kennedy in it's front and by the
+                    Presidential Seal in it's back. It weights 11 g and is 1.2 inch in diameter. It's 91% Cu.</p>
+                <p>The 1 dollar coin - also called "golden dollar" - is portraited by Profile of Sacagawea with her
+                    child, Jean Baptiste Charbonneau in it's front and by the Bald eagle in it's back. It weights 8.1 g
+                    and is 1.04 inch in diameter. It's 88%
+                    Cu.
+                </p>
+                <h2>Characteristics of the dollar bill:</h2>
+                <p>The one dollar bill is portraited by George Washington in it's front and by the Great Seal of the
+                    United States in it's back. </p>
+                <p>The two dollars bill is portraited by Thomas Jefferson in it's front and by the Declaration of
+                    Independence by John Trumbull in it's back. </p>
+                <p> The five dollar bill is portraited by Abraham Lincoln in it's front and by the Lincoln Memorial in
+                    it's back. </p>
+                <p> The ten dollars bill is portraited by Alexander Hamilton in it's front and by the U.S. Treasury in
+                    it's back.</p>
+                <p>The twenty dollars bill is portraited by Andrew Jackson in it's front and by the U.S. Treasury in
+                    it's back.</p>
+                <p>The fifty dollars bill is portraited by Ulysses S. Grant in it's front and by the United States
+                    Capitol in it's back.</p>
+                <p>The one hundred dollars bill is portraited by Benjamin Franklin in it's front and by the Independence
+                    Hall in it's back.</p>
+            </div>
+        </div>
+
+
+        <br>
+
+        <div class="econ-use-curr">
+            <h2>Economies that use Euro </h2>
+            <div id="grid-holder">
+                <div class="curr-column">
+                    <h3>Countries<br><br></h3>
+                    <ul>
+                        <li> Austria </li>
+                        <li> Belgium </li>
+                        <li> Cyprus </li>
+                        <li> Estonia </li>
+                        <li> Finland </li>
+                        <li> France </li>
+                        <li> Germany </li>
+                        <li> Greece </li>
+                        <li> Ireland </li>
+                        <li> Italy </li>
+                        <li> Latvia </li>
+                        <li> Lithuania </li>
+                        <li> Luxembourg </li>
+                        <li> Malta </li>
+                        <li> Monaco </li>
+                        <li> Netherlands </li>
+                        <li> Portugal </li>
+                        <li> San Marino </li>
+                        <li> Slovakia </li>
+                        <li> Slovenia </li>
+                        <li> Spain </li>
+                        <li> Vatican City </li>
+                    </ul>
+                </div>
+                <div class="curr-column">
+                    <h3>Previous<br>Currency</h3>
+                    <ul>
+                        <li> Austrian schilling </li>
+                        <li> Belgian franc </li>
+                        <li> Cypriot pound </li>
+                        <li> Estonian kroon </li>
+                        <li> Finnish markka </li>
+                        <li> French franc </li>
+                        <li> German mark </li>
+                        <li> Greek drachma </li>
+                        <li> Irish pound </li>
+                        <li> Italian lira </li>
+                        <li> Latvian lats </li>
+                        <li> Lithuanian litas </li>
+                        <li> Luxembourgish franc </li>
+                        <li> Maltese lira </li>
+                        <li> Monégasque franc </li>
+                        <li> Dutch guilder </li>
+                        <li> Portuguese escudo </li>
+                        <li> Sammarinese lira </li>
+                        <li> Slovak koruna </li>
+                        <li> Slovenian tolar </li>
+                        <li> Spanish peseta </li>
+                        <li> Vatican lira </li>
+
+                    </ul>
+                </div>
+                <div class="curr-column">
+                    <h3>Code<br><br></h3>
+                    <ul>
+                        <li> ATS </li>
+                        <li> BEF </li>
+                        <li> CYP </li>
+                        <li> EEK </li>
+                        <li> FIM </li>
+                        <li> FRF </li>
+                        <li> DEM </li>
+                        <li> GRD </li>
+                        <li> IEP </li>
+                        <li> ITL </li>
+                        <li> LVL </li>
+                        <li> LTL </li>
+                        <li> LUF </li>
+                        <li> MTL </li>
+                        <li> MCF </li>
+                        <li> NLG </li>
+                        <li> PTE </li>
+                        <li> SML </li>
+                        <li> SKK </li>
+                        <li> SIT </li>
+                        <li> ESP </li>
+                        <li> VAL </li>
+                    </ul>
+                </div>
+            </div>
+            <div class="bill-img">
+                <img src="./img/bills/euro.png" alt="euro bill">
+            </div>
+            <div class="facts">
+                <ul>
+                    <li>The euro (sign: €; code: EUR) is the official currency of 19 of the 27 member states of the
+                        European Union, also know as the eurozone. The euro is the second-largest and second-most traded
+                        currency in the foreign exchange market.</li>
+                    <li>Euro banknotes: €5, €10, €20, €50, €100, €200, €500.</li>
+                    <li>Euro coins: 1c, 2c, 5c, 10c, 20c, 50c, €1.</li>
+                    <li><a href="https://www.ecb.europa.eu/home/html/index.en.html" target="_blank">Central Bank:
+                            European Central Bank: </a></li>
+                </ul>
+            </div>
+            <div class="bill-img">
+                <img src="./img/bills/eurozone.png" alt="eurozone">
+            </div>
+
+            <!-- ------------------------------- -->
+            <!-- ------------------------------- -->
+
+
+            <div class="facts">
+                <!-- <h2>Euro sign</h2> -->
+
+                <p>The Euro sign € was choses out of ten different proposals. It's creator is Alain Billiet, who found
+                    inpiration in the reek epsilon Є.</p>
+                <p>The euro was estabilished in 1992 with a list of rules for those States who wish to have it as their
+                    currency. Among these rules are budget deficit of less than 3% of their GDP, a debt ratio of less
+                    than 60% of GDP, low inflation, and
+                    interest rates close to the EU average</p>
+                <p>Belgian Esperantist Germain Pirlot was the one who coined the name "euro" for the currency in 1995.
+                </p>
+                <p>The euro is the currency used by the so called "Eurozone", which is composed by 19 countries:
+                    Austria, Belgium, Cyprus, Estonia, Finland, France, Germany, Greece, Ireland, Italy, Latvia,
+                    Lithuania, Luxembourg, Malta, the Netherlands, Portugal,
+                    Slovakia, Slovenia, and Spain. The Eurozone is made by over 340 million citizens. Some States
+                    outside the Eurozone also adopted the euro as their currency, such as Saint Barthélemy, Saint
+                    Martin, Saint Pierre and Miquelon, the French
+                    Southern and Antarctic Lands and Akrotiri and Dhekelia.</p>
+                <p>Euro is the second currency used in the global foreign exchange market, second only to the U.S.
+                    dollar.</p>
+                <p>Dispite it's strength, not everyone is happy with the euro due to it's regulation, lack of
+                    flexibility and rigidity towards the States that adopt it as their national money.</p>
+                <p>The feeling among the eurozone citizens is that inflation has increased after the adoption of the
+                    euro. No serious studies about it has been released though.</p>
+                <p>Even though the euro has had significant impact in the economies of the eurozone States, it's
+                    creation has even greater results. One of this results is the sense of greater unity among many of
+                    the eurozone citizens. It's goes almost unoticed
+                    travelling from countries to countries in the eurozone due to it's open borders and it's single
+                    currency. However, researches show that the sense of unity in some places hasn't increased at all.
+                </p>
+                <p></p>
+
+
+
+            </div>
+
+
+
+
+
+            <!-- ------------------------------- -->
+            <!-- ------------------------------- -->
+        </div>
+    </div>
+
+    <!-- ---------- rates
+    -------------------------------------------------- -->
+    <div id="rates-content" class="content">
+
+        <form action="">
+            <select id="rates" name="rates">
+                <option value="eur">EUR</option>
+                <option value="usd">USD</option>
+                <option value="aud">AUD</option>
+                <option value="bgn">BGN</option>
+                <option value="brl">BRL</option>
+                <option value="cad">CAD</option>
+                <option value="chf">CHF</option>
+                <option value="cny">CNY</option>
+                <option value="czk">CZK</option>
+                <option value="dkk">DKK</option>
+                <option value="gbp">GBP</option>
+                <option value="hkd">HKD</option>
+                <option value="hrk">HRK</option>
+                <option value="huf">HUF</option>
+                <option value="idr">IDR</option>
+                <option value="ils">ILS</option>
+                <option value="inr">INR</option>
+                <option value="isk">ISK</option>
+                <option value="jpy">JPY</option>
+                <option value="krw">KRW</option>
+                <option value="mxn">MXN</option>
+                <option value="myr">MYR</option>
+                <option value="nok">NOK</option>
+                <option value="nzd">NZD</option>
+                <option value="php">PHP</option>
+                <option value="pln">PLN</option>
+                <option value="ron">RON</option>
+                <option value="rub">RUB</option>
+                <option value="sek">SEK</option>
+                <option value="sgd">SGD</option>
+                <option value="thb">THB</option>
+                <option value="try">TRY</option>
+                <option value="zar">ZAR</option>
+            </select>
+
+            <button type="button" class="submit" id="rates-go">go</button>
+        </form>
+
+
+        <ul id="rates-list"></ul>
+
+
+
+        <!-- ------------------------ -->
+        <!-- ------------------------ -->
+        <div class="facts">
+
+            <p>According to the <a
+                    href="https://www.investopedia.com/articles/forex/09/factors-drive-american-dollar.asp"
+                    target="_blank">"Investopedia"</a>, at least three factore influence the dollar's price: supply and
+                demand, sentiment and market psychology
+                and technical factors.
+            </p>
+            <h2>Supply Vs. Demand </h2>
+            <p>Simply put, the more people want something the higher it's value increases.
+            </p>
+            <p>On the other hand, the less people want something the lower it's value is. For example, one person wants
+                to pay 1 dollar for an apple. If 2 people now are willing to buy an apple but there's only one apple
+                available, this factor will automatically
+                give the apple seller the range to ask for more money. If now a thousand people want to buy that same
+                apple, the apple seller will now be able to make even more money due to the even higher value the apple
+                will have. On the other hand,
+                if there are a hundred apple and only one person willing to buy only one apple, the apple seller will
+                have to lower their price, otherwise he'll lose them. That's what supply vs demand is about in very
+                simple words. </p>
+            <p>In the case of dollar, when the U.S. exports products or services, it creates a demand for dollars
+                because customers need to pay for goods and services in dollars. That will make the price of the dollar
+                rise. The same will happen when people
+                or corporations are willing to by dollars. The opposite is true.</p>
+
+            <h2>Sentiment and Market Psychology</h2>
+            <p>In the case that the U.S. economy weakens and consumption slows due to increasing unemployment or a major
+                crises, the possibility of selling dollars will become real and that will influence the dollar value. If
+                investors for any reason feel
+                like they have better opportunities buying other currencies than the dollar that will make the price of
+                the dollar drop.</p>
+            <h2>Technical Factors</h2>
+            <p>In order to trying to predict the dollar price investors will follow news, goverment releases,
+                statistics, GDP, major events, suply vs demand, unemployment and seasonal factors, among others.</p>
+        </div>
+
+
+
+
+
+        <!-- ------------------------ -->
+        <!-- ------------------------ -->
+
+
+    </div>
+
+    <!-- ---------- info
+    -------------------------------------------------- -->
+    <div id="info-content" class="content">
+
+        <p class="info-p">Dollarnow is an web app is designed to instantly convert a vast rang of currencies into
+            another quickly and easily.</p>
+
+        <p class="info-p">We give you two simple yet efficient option: oneto-one money rate convesion as well as
+            one-to-many money rate convertion.</p>
+
+        <p class="info-p">In order to convert one currency into another, click the <img
+                src="./img/icons/convert-dark.png" alt="converter" class="intext-icon"> icon on the nav bar. When in the
+            converter section, simply enter an amount of money (e.g. '100') and choose the
+            currencies you desire to convert the monetary value of (e.g. 'USD' to 'EUR'). Then click 'Go' in order to
+            see the result. The application will calculate and display the corresponding amount of money at the time of
+            it's use.
+        </p>
+
+
+        <p class="info-p">If you wish to see the convertion of various currencies, simply click the <span><i
+                    class="far fa-list-alt intext-icon"></i></span> icon, choose the desired currency and click 'Go'.
+            The application will calculate within a beautiful interface the
+            countries where each money is used (represented by it's respective flag), the it's money's monetary code as
+            well as it's monetary value.
+        </p>
+
+
+        <p class="info-p">Dollarnow gives real-time information on the market and bank exchange rates, which makes it
+            extreamely useful when, for example:
+        </p>
+
+        <ul class="info-ul">
+
+
+
+            <li>
+                Estimating the value of goods or services</li>
+            <li>
+                Basic accounting and invoicing</li>
+            <li>
+                Preparing financial plans and reports</li>
+        </ul>
+
+
+
+    </div>
+
+    <footer>
+        <p id="copyright"><a href="https://cleancode.club" target="_blank">Cleancode <i class="far fa-copyright"></i>
+                2020</a></p>
+    </footer>
+
+    <script src="./js/converter.js"></script>
+    <script src="./js/rates.js"></script>
+
+
+</body>
+
+</html>
